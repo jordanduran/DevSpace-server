@@ -8,9 +8,11 @@ const { NODE_ENV } = require('./config');
 const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
+app.post('/', (req, res) => {
+  console.log(req.body);
+  res.send('A POST Request');
 });
 
 app.use(function errorHandler(error, req, res, next) {
