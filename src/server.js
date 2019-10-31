@@ -9,9 +9,7 @@ const knexInstance = knex({
   connection: process.env.DB_URL
 });
 knexInstance.from('users').select('name', 'email', 'avatar')
-  .then(result => {
-    console.log(result)
-  })
+    console.log('knex and driver installed correctly');
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);

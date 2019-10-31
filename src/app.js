@@ -10,9 +10,9 @@ const app = express();
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 app.use(express.json());
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
   console.log(req.body);
-  res.send('A POST Request');
+  res.send('A GET Request');
 });
 
 app.use(function errorHandler(error, req, res, next) {
