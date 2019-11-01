@@ -1,3 +1,7 @@
-const UsersService = {}
+const UsersService = {
+    getAllUsers() {
+        return 'all the users!!'
+    }
+}
 
-module.export = UsersService;
+module.exports = UsersService;

@@ -11,7 +11,5 @@ CREATE TABLE users (
   website TEXT,
   location TEXT,
   status TEXT,
-  skills TEXT,
-  bio TEXT,
-  githubusername TEXT UNIQUE
+  bio TEXT
 );

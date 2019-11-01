@@ -4,15 +4,24 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
+const UsersService = require('./users/UsersService');
 
 const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 app.use(express.json());
 
+app.get('/users', (req, res, next) => {
+  const knexInstance = req.app.get('db')
+  UsersService.getAllUsers(knexInstance)
+    .then(users => {
+      res.json(users)
+    })
+    .catch(next)
+})
+
 app.get('/', (req, res) => {
-  console.log(req.body);
-  res.send('A GET Request');
+
 });
 
 app.use(function errorHandler(error, req, res, next) {
