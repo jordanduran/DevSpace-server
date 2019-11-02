@@ -4,27 +4,22 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-const UsersService = require('./users/UsersService');
+const UserRouter = require('./users/UsersRouter');
 
 const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
+app.use(morgan(morganOption));
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
-
-app.get('/users', (req, res, next) => {
-  const knexInstance = req.app.get('db')
-  UsersService.getAllUsers(knexInstance)
-    .then(users => {
-      res.json(users)
-      console.log(res)
-    })
-    .catch(next)
-})
 
 app.get('/', (req, res) => {
   res.send('Servers running');
 
 });
+
+app.use('/', UserRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
@@ -36,9 +31,5 @@ app.use(function errorHandler(error, req, res, next) {
   }
   res.status(500).json(response);
 });
-
-app.use(morgan(morganOption));
-app.use(helmet());
-app.use(cors());
 
 module.exports = app;

@@ -1,6 +1,6 @@
 const UsersService = {
-    getAllUsers() {
-        return 'all the users!!'
+    getAllUsers(db) {
+        return db('users')
     }
 }
 
