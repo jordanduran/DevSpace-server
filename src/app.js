@@ -16,11 +16,13 @@ app.get('/users', (req, res, next) => {
   UsersService.getAllUsers(knexInstance)
     .then(users => {
       res.json(users)
+      console.log(res)
     })
     .catch(next)
 })
 
 app.get('/', (req, res) => {
+  res.send('Servers running');
 
 });
 

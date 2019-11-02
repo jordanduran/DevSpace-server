@@ -7,4 +7,9 @@ const knexInstance = knex({
   connection: process.env.DB_URL,
 })
 
+knexInstance.from('users').select('*')
+    .then(result => {
+        console.log(result)
+    })
+
 console.log(UsersService.getAllUsers())

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
-    "start": "node ./src/server.js",
+    "start": "node ./src/users/users.js",
     "migrate": "postgrator --config postgrator-config.js",
     "dev": "nodemon ./src/server",
     "predeploy": "npm audit",
