@@ -26,9 +26,7 @@ const UsersService = {
             .from('users')
             .where({ id })
             .first();
-    },
+    }
 };
-
-module.exports = noteService;
 
 module.exports = UsersService;
