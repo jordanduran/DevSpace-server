@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const UserRouter = require('./users/UsersRouter');
 const auth = require('../src/auth/index');
+const cookieParser = require('cookie-parser'); 
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser('process.env.COOKIE_SECRET'))
 
 app.get('/', (req, res) => {
   res.send('Servers running');
