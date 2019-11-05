@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
   });
 });
 
+// Email validation : Email field is string and email field not blank
+// Password validation: Field not left blank and >= 6 characters
+
 function validUser(user) {
   const validEmail = typeof user.email == 'string' && user.email.trim() != '';
   const validPassword =
@@ -19,6 +22,8 @@ function validUser(user) {
 
   return validEmail && validPassword;
 }
+
+// Checking if Email is not found in db, or already taken
 
 router.post('/signup', (req, res, next) => {
   const db = req.app.get('db');
