@@ -11,5 +11,6 @@ CREATE TABLE users (
   website TEXT,
   location TEXT,
   status TEXT,
-  bio TEXT
+  bio TEXT,
+  school TEXT
 );

@@ -28,6 +28,7 @@ function validUser(user) {
 router.post('/signup', (req, res, next) => {
   const db = req.app.get('db');
   const { email } = req.body;
+  console.log(req.body);
   if (validUser(req.body)) {
     UsersService.getUsersByEmail(db, email).then(user => {
       console.log('user', user);
