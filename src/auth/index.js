@@ -87,6 +87,7 @@ router.post('/login', (req, res, next) => {
               signed: true
             });
             res.json({
+              user,
               message: 'Logged in!'
             });
           } else {
