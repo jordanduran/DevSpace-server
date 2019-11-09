@@ -61,6 +61,30 @@ UserRouter
           .end();
       })
       .catch(next);
-  });
+  })
+  .patch((req, res, next) => {
+    const { id } = req.params;
+    const knexInstance = req.app.get('db');
+    const newFields = {
+      name: req.body.name,
+      avatar: req.body.avatar,
+      company: req.body.company,
+      website: req.body.website,
+      location: req.body.location,
+      bio: req.body.bio,
+      twitter_url: req.body.twitter_url,
+      youtube_url: req.body.youtube_url,
+      facebook_url: req.body.facebook_url,
+      linkedin_url: req.body.linkedin_url,
+      instagram_url: req.body.instagram_url,
+    }
+    UserService.updateUser(knexInstance, id, newFields)
+      .then((user) => {
+        res
+          .status(201)
+          .end();
+      })
+      .catch(next);
+  })
 
 module.exports = UserRouter;

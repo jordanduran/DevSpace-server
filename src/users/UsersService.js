@@ -18,7 +18,6 @@ const UsersService = {
     return db('users')
       .where({ id })
       .update(newUser)
-      .first();
   },
   getUsersById(db, id) {
     return db

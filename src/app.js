@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const UserRouter = require('./users/UsersRouter');
+const PostRouter = require('./post/PostRouter');
 const auth = require('../src/auth/index');
 const cookieParser = require('cookie-parser'); 
 
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 
 app.use('/auth', auth);
 app.use('/', UserRouter);
+app.use('/', PostRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
