@@ -66,8 +66,6 @@ UserRouter
     const { id } = req.params;
     const knexInstance = req.app.get('db');
     const newFields = {
-      name: req.body.name,
-      avatar: req.body.avatar,
       company: req.body.company,
       website: req.body.website,
       location: req.body.location,
@@ -81,8 +79,8 @@ UserRouter
     UserService.updateUser(knexInstance, id, newFields)
       .then((user) => {
         res
-          .status(201)
-          .end();
+          .status(204)
+          .json(user);
       })
       .catch(next);
   })
