@@ -13,10 +13,10 @@ const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 app.use(morgan(morganOption));
-app.use(helmet());
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
-app.use(cookieParser('process.env.COOKIE_SECRET'))
+// app.use(cookieParser('process.env.COOKIE_SECRET'))
 
 app.get('/', (req, res) => {
   res.send('Servers running');
