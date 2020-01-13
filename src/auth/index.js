@@ -78,9 +78,11 @@ router.post('/login', (req, res, next) => {
         // Compare password with hashed password
         bcrypt.compare(req.body.password, user.password).then(result => {
           // If passwords matched
+
           if (result) {
             res.json({
               user,
+              userId: user.id,
               message: 'Logged in!'
             });
           } else {
