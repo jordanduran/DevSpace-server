@@ -7,7 +7,7 @@ const { NODE_ENV } = require('./config');
 const UserRouter = require('./users/UsersRouter');
 const PostRouter = require('./post/PostRouter');
 const auth = require('../src/auth/index');
-const cookieParser = require('cookie-parser'); 
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -19,8 +19,7 @@ app.use(express.json());
 // app.use(cookieParser('process.env.COOKIE_SECRET'))
 
 app.get('/', (req, res) => {
-  res.send('Servers running');
-
+  res.send('Hello, world!');
 });
 
 app.use('/auth', auth);
